@@ -27,11 +27,11 @@
       </div>
       <script>
           var buildUrl = "Build";
-          var loaderUrl = buildUrl + "/Desktop.loader.js";
+          var loaderUrl = buildUrl + "/vkv1.loader.js";
           var config = {
-              dataUrl: buildUrl + "/Desktop.data.unityweb",
-              frameworkUrl: buildUrl + "/Desktop.framework.js.unityweb",
-              codeUrl: buildUrl + "/Desktop.wasm.unityweb",
+              dataUrl: buildUrl + "/vkv1.data.unityweb",
+              frameworkUrl: buildUrl + "/vkv1.framework.js.unityweb",
+              codeUrl: buildUrl + "/vkv1.wasm.unityweb",
               streamingAssetsUrl: "StreamingAssets",
               companyName: "DefaultCompany",
               productName: "Sontar",
@@ -87,47 +87,43 @@
       </script>
       <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 
-      <script type="text/javascript">
+    <script type="text/javascript">
 
-          vkBridge.send('VKWebAppInit');
-
-
-
-          function auth() {
-              vkBridge.send('VKWebAppGetUserInfo').then(_info => {
-                  console.log(_info);
-                  unityI.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
-              });
-          }
-
-          function getUserData() {
-              vkBridge.send("VKWebAppStorageGet", { "keys": ["_save"] }).then(data => {
-                  console.log(data);
-                  unityI.SendMessage('VKSDK', 'DataGetting', JSON.stringify(data));
-              });
-          }
-
-          function setUserData(data) {
-              console.log(data);
-              vkBridge.send('VKWebAppStorageSet', { "key": "_save", "value": data }).then(_info => {
-                  console.log("Saved!")
-              });
-          }
-
-          function showFullscrenAd() {
-              vkBridge.send('VKWebAppShowNativeAds', { ad_format: "interstitial" }).then(data => {
-                  console.log(data);
-              });
-          }
-
-          function showRewardedAd() {
-              vkBridge.send('VKWebAppShowNativeAds', { ad_format: "reward" }).then(data => {
-                  console.log(data);
-                  unityI.SendMessage('VKSDK', 'RewardGetting', JSON.stringify(data.result));
-              })
-          }
+      vkBridge.send('VKWebAppInit');
 
 
-      </script>
+
+      function auth(){
+        vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
+          console.log(_info);
+          unityI.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
+        });
+      }
+
+      function getUserData(){
+        vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
+        console.log(data);
+        unityI.SendMessage('VKSDK', 'DataGetting', JSON.stringify(data));
+      });}
+
+      function setUserData(data){
+        console.log(data);
+        vkBridge.send('VKWebAppStorageSet',{"key": "_save" , "value": data}).then(_info =>{
+          console.log("Saved!")});
+      }
+
+      function showFullscrenAd(){
+        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"interstitial"}).then(data => {
+          console.log(data);});
+      }
+
+      function showRewardedAd(){
+        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"reward"}).then(data => {
+          console.log(data);
+          unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
+      }
+
+
+    </script>
   </body>
 </html>
