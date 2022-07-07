@@ -13,18 +13,18 @@ body { padding: 0; margin: 0 }
 #unity-footer { position: relative }
 #text-game
 { 
-	font-size: 32px;
+	font-size: 64px;
 	font-family: sans-serif;
-	background-color : gray;
-	color: green;
+	background-color : black;
+	color: lime;
 }
-#backgroundt
+#closed-text
 { 
 width: 9000;
  height: 9000;
-	font-size: 2000px;
+	font-size: 20000px;
 	font-family: sans-serif;
-	background-color : gray;
+	background-color : black;
 	color: red;
 }
 #.unity-mobile #unity-footer { display: none }
